@@ -10,14 +10,14 @@ $message = ' ';
 if (isset ( $_POST ['connexion'] )) {
 	$identifiant = $_POST ['identifiant'];
 	$mot_de_passe = $_POST ['mot_de_passe'];
-	require_once 'services/ElecteurService.class.php';
+	require_once '../services/ElecteurService.class.php';
 	$serviceElecteur = new ElecteurService();
 	if ($serviceElecteur->UtilisateurExiste( $identifiant, $mot_de_passe )) {
 		$session = identifiant_unique ();
 		$date = date ( '\l\e d/m/Y à H:i:s' );
 		$url = "?session=$session&date=" . rawurlencode ( $date ) . "&identifiant=" . rawurlencode ( $identifiant );
 		
-			header ( "location:vues/elections.php$url" );
+			header ( "location:elections.php$url" );
 		
 		exit ();
 	} else {
@@ -30,8 +30,8 @@ if (isset ( $_POST ['connexion'] )) {
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 
 	<title>Bureau de vote</title>
-	<link style="text/css" href="css/style.css" rel="stylesheet">
-	<link style="text/css" href="css/bootstrap.css" rel="stylesheet">
+	<link style="text/css" href="../css/style.css" rel="stylesheet">
+	<link style="text/css" href="../css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 	<div class="Haut">
